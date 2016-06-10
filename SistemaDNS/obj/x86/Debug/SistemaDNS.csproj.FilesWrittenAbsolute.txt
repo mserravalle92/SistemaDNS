@@ -1,0 +1,5 @@
+/home/mserravalle/proyectos/SistemaDNS/SistemaDNS/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/mserravalle/proyectos/SistemaDNS/SistemaDNS/bin/Debug/SistemaDNS.exe.mdb
+/home/mserravalle/proyectos/SistemaDNS/SistemaDNS/bin/Debug/SistemaDNS.exe
+/home/mserravalle/proyectos/SistemaDNS/SistemaDNS/obj/x86/Debug/SistemaDNS.exe
+/home/mserravalle/proyectos/SistemaDNS/SistemaDNS/obj/x86/Debug/SistemaDNS.exe.mdb
