@@ -40,6 +40,17 @@ namespace SistemaDNS
 
 				}
 
+				if (opcion == 2) {
+					Console.Clear ();
+					Console.WriteLine ("************************************");
+					Console.WriteLine ("**   DOMINIOS DE NIVEL SUPERIOR   **");
+					Console.WriteLine ("************************************");
+					Console.WriteLine ("");
+					SistemaDNS.imprimirDominiosSuperior ();
+					Console.WriteLine ("Presione cualquier tecla para volver...");
+					Console.ReadKey ();
+				}
+
 				if (opcion == 4) {
 					Console.Clear ();
 					Console.WriteLine ("************************************");
@@ -57,6 +68,7 @@ namespace SistemaDNS
 				Console.WriteLine ("************************************");
 				Console.WriteLine ("");
 				Console.WriteLine ("1. Ingresar dominio");
+				Console.WriteLine ("2. Ver listado de dominios superiores");
 				Console.WriteLine ("4. Test");
 				Console.WriteLine ("5. Salir");
 

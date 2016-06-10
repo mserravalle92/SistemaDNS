@@ -38,10 +38,14 @@ namespace SistemaDNS
 					existe = true;
 				}
 			} else {
-				ArrayList listaHijos = arbol.getHijos ();
-				foreach (ArbolGeneral hijo in listaHijos) {
-					agregarDominio (dominio, hijo, padre);
+				if (arbol.getHijos () != null) {
+					ArrayList listaHijos = arbol.getHijos ();
+
+					foreach (ArbolGeneral hijo in listaHijos) {
+						agregarDominio (dominio, hijo, padre);
+					}
 				}
+					
 			}
 
 		}
@@ -111,6 +115,28 @@ namespace SistemaDNS
 			}
 
 			this.agregarEquipo (equipo,this,padreEquipo);
+
+		}
+
+		public void imprimirDominiosSuperior(){
+		
+			NodoGeneral raiz = this.raiz;
+			DominioBase dominio = (DominioBase)raiz.getDato ();
+
+			if (dominio.getTipo () == "Superior") {
+				Console.WriteLine (dominio.getEtiqueta ());
+			} else {
+				if(raiz.getHijos()!=null){
+					ArrayList listaHijos = raiz.getHijos();
+					foreach(ArbolGeneral arbol in listaHijos){
+						DNS dns = new DNS (arbol.raiz);
+						dns.imprimirDominiosSuperior ();
+					}
+
+				}
+			}
+
+
 
 		}
 
