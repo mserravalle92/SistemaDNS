@@ -23,6 +23,21 @@ namespace SistemaDNS
 
 			return dominioSeparado;
 		}
+
+		public void testArbol(ArbolGeneral arbol){
+
+			ArrayList listaHijos = arbol.getHijos ();
+			DominioBase datoRaiz = (DominioBase)arbol.getDatoRaiz ();
+			Console.WriteLine (datoRaiz.getEtiqueta ());
+
+			if (listaHijos != null) {
+				foreach (ArbolGeneral arbolHijo in listaHijos) {
+					testArbol (arbolHijo);
+				}
+			}
+
+		}
+
 	}
 }
 

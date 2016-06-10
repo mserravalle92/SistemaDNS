@@ -31,6 +31,7 @@ namespace SistemaDNS
 			public void agregarHijo(NodoGeneral hijo){
 
 				ArrayList lista = this.raiz.getHijos();
+
 				if (lista == null) {
 					lista =  new ArrayList();
 				}
