@@ -258,6 +258,26 @@ namespace SistemaDNS
 			}
 		}
 
+		public void dominioEnProfundidad(int profundidad,int actual){
+
+			int profundidadActual = actual;
+
+			NodoGeneral raiz = this.raiz;
+			DominioBase dominio = (DominioBase)raiz.getDato ();
+
+			if (profundidad == profundidadActual) {
+				Console.WriteLine (dominio.getEtiqueta ());
+			} else {
+				profundidadActual += 1;
+				ArrayList listaHijos = raiz.getHijos ();
+				foreach (ArbolGeneral arbol in listaHijos) {
+					DNS dns = new DNS (arbol.raiz);
+					dns.dominioEnProfundidad (profundidad, profundidadActual);
+				}
+			}
+		
+		}
+
 	}
 }
 

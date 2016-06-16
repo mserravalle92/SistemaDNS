@@ -58,6 +58,30 @@ namespace SistemaDNS
 
 		}
 
+		public void precargaDominios(DNS dns){
+			
+			string dominio1 = "mail.google.com";
+			string ip1 = "192.168.110.5";
+			string servicios1 = "mensajeria por SMTP";
+			dns.cargarDominio (dominio1,ip1,servicios1);
+
+			string dominio2 = "mariano.local.com";
+			string ip2 = "192.168.1.1";
+			string servicios2 = "servidor de archivos";
+			dns.cargarDominio (dominio2,ip2,servicios2);
+
+			string dominio3 = "matias.local.com";
+			string ip3 = "192.168.1.2";
+			string servicios3 = "servidor de archivos";
+			dns.cargarDominio (dominio3,ip3,servicios3);
+
+			string dominio4 = "router.cisco.argentina.ar";
+			string ip4 = "172.248.1.1";
+			string servicios4 = "traduccion de IP";
+			dns.cargarDominio (dominio4,ip4,servicios4);
+			
+		}
+
 	}
 }
 

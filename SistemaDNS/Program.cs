@@ -12,6 +12,8 @@ namespace SistemaDNS
 
 			Utils utilidad = new Utils ();
 
+			utilidad.precargaDominios (SistemaDNS);
+
 			Console.WriteLine ("************************************");
 			Console.WriteLine ("**           SISTEMA DNS          **");
 			Console.WriteLine ("************************************");
@@ -21,9 +23,9 @@ namespace SistemaDNS
 			Console.WriteLine ("3. Ver Datos de equipo");
 			Console.WriteLine ("4. Ver Equipos de un subdominio ");
 			Console.WriteLine ("5. Eliminar equipo ");
-
-			Console.WriteLine ("6. Test");
-			Console.WriteLine ("7. Salir");
+			Console.WriteLine ("6. Ver dominios por profundidad ");
+			Console.WriteLine ("7. Test");
+			Console.WriteLine ("8. Salir");
 
 
 
@@ -31,7 +33,7 @@ namespace SistemaDNS
 
 			int opcion = int.Parse (op);
 
-			while (opcion != 7) {
+			while (opcion != 8) {
 			
 				if (opcion == 1) {
 					Console.Clear ();
@@ -97,8 +99,22 @@ namespace SistemaDNS
 					SistemaDNS.eliminarEquipo (equipo);
 
 				}
-
 				if (opcion == 6) {
+					Console.Clear ();
+					Console.WriteLine ("*************************************");
+					Console.WriteLine ("** BUSCAR DOMINIOS POR PROFUNDIDAD **");
+					Console.WriteLine ("*************************************");
+					Console.WriteLine ("");
+					Console.WriteLine ("Ingrese la profundidad");
+					string num = Console.ReadLine ();
+
+					int profundidad = int.Parse (num);
+					SistemaDNS.dominioEnProfundidad (profundidad, 0);
+					Console.WriteLine ("Presione cualquier tecla para volver...");
+					Console.ReadKey();
+				}
+
+				if (opcion == 7) {
 					Console.Clear ();
 					Console.WriteLine ("************************************");
 					Console.WriteLine ("**               TEST             **");
@@ -119,9 +135,9 @@ namespace SistemaDNS
 				Console.WriteLine ("3. Ver Datos de equipo");
 				Console.WriteLine ("4. Ver Equipos de un subdominio");
 				Console.WriteLine ("5. Eliminar equipo ");
-
-				Console.WriteLine ("6. Test");
-				Console.WriteLine ("7. Salir");
+				Console.WriteLine ("6. Ver dominios por profundidad ");
+				Console.WriteLine ("7. Test");
+				Console.WriteLine ("8. Salir");
 
 				 op = Console.ReadLine ();
 				 opcion = int.Parse (op);
