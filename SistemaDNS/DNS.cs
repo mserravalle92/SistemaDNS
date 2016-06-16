@@ -98,6 +98,7 @@ namespace SistemaDNS
 			ArrayList dominioDividido = util.dividirDominio (dominio);
 
 			string etiquetaEquipo = (string)dominioDividido[dominioDividido.Count - 1];
+
 			string padreEquipo = (string)dominioDividido[dominioDividido.Count - 2];
 			string etiquetaDomSup = (string)dominioDividido [0];
 
@@ -114,6 +115,7 @@ namespace SistemaDNS
 				string dom = (string)dominioDividido [i];
 				Dominio domi = new Dominio (dom);
 				this.agregarDominio (domi,this,padre);
+
 			}
 
 			this.agregarEquipo (equipo,this,padreEquipo);
@@ -175,11 +177,9 @@ namespace SistemaDNS
 			DominioBase dom = (DominioBase)this.getDatoRaiz ();
 
 			if (dom.getEtiqueta () == dominio) {
-				ArrayList listaHijos = raiz.getHijos ();
-				foreach (ArbolGeneral hijo in listaHijos) {
-					this.mostrarEquipos (hijo);
-				}
-			} else {
+				mostrarEquipos (this);
+			}
+			 else {
 				ArrayList listaHijos = raiz.getHijos ();
 				foreach (ArbolGeneral hijo in listaHijos) {
 					DNS dns = new DNS (hijo.raiz);
@@ -189,15 +189,71 @@ namespace SistemaDNS
 		}
 
 		public void mostrarEquipos(ArbolGeneral arbol){
-			ArrayList listaHijos = arbol.getHijos ();
-			foreach (ArbolGeneral hijo in listaHijos) {
-				DominioBase equipo = (DominioBase)hijo.getDatoRaiz ();
-				if (equipo.getTipo() == "Equipo") {
-					Console.WriteLine (equipo.getEtiqueta ());
-				} else {
-					DNS dns = new DNS (hijo.raiz);
-					dns.mostrarEquipos (hijo);
+			if (arbol.getHijos () != null) {
+				ArrayList listaHijos = arbol.getHijos ();
+				foreach (ArbolGeneral hijo in listaHijos) {
+					DominioBase equipo = (DominioBase)hijo.getDatoRaiz ();
+					if (equipo.getTipo() == "Equipo") {
+						Console.WriteLine (equipo.getEtiqueta ());
+					} else {
+						DNS dns = new DNS (hijo.raiz);
+						dns.mostrarEquipos (hijo);
 
+					}
+				}
+			}
+
+		}
+
+		public void eliminarEquipo (string nombreEquipo){
+
+			NodoGeneral raiz = this.raiz;
+			if (raiz.getHijos () != null) {
+				ArrayList listaHijos = raiz.getHijos ();
+
+
+				foreach (ArbolGeneral arbol in listaHijos) {
+					NodoGeneral raizHijo = arbol.raiz;
+					DominioBase dominioBase = (DominioBase)raizHijo.getDato ();
+
+					if (dominioBase.getEtiqueta() == nombreEquipo) {
+						if (dominioBase.getTipo() == "Equipo") {
+							this.eliminarHijo (raizHijo);
+							break;
+						}
+					} else {
+						DNS dns = new DNS (arbol.raiz);
+						dns.eliminarEquipo (nombreEquipo);
+					}
+				}
+
+				this.eliminarSubdominioHoja ();
+			}
+
+
+		}
+
+		public void eliminarSubdominioHoja(){
+			NodoGeneral raiz = this.raiz;
+			if (raiz.getHijos () != null) {
+
+			ArrayList listaHijos = raiz.getHijos ();
+
+				foreach (ArbolGeneral arbol in listaHijos) {
+					NodoGeneral raizHijo = arbol.raiz;
+					DominioBase dominioBase = (DominioBase)raizHijo.getDato ();
+					if (raizHijo.getHijos () != null) {
+						if (raizHijo.getHijos ().Count == 0) {
+							if (dominioBase.getTipo () == "Subdominio") {
+								this.eliminarHijo (raizHijo);
+								break;
+							}
+						} else {
+							DNS dns = new DNS (arbol.raiz);
+							dns.eliminarSubdominioHoja ();
+						}
+
+					}
 				}
 			}
 		}

@@ -20,6 +20,7 @@ namespace SistemaDNS
 			Console.WriteLine ("2. Ver listado de dominios superiores");
 			Console.WriteLine ("3. Ver Datos de equipo");
 			Console.WriteLine ("4. Ver Equipos de un subdominio ");
+			Console.WriteLine ("5. Eliminar equipo ");
 
 			Console.WriteLine ("6. Test");
 			Console.WriteLine ("7. Salir");
@@ -27,6 +28,7 @@ namespace SistemaDNS
 
 
 			string op = Console.ReadLine ();
+
 			int opcion = int.Parse (op);
 
 			while (opcion != 7) {
@@ -79,8 +81,20 @@ namespace SistemaDNS
 					Console.WriteLine ("");
 					Console.WriteLine ("Ingrese el nombre del subdominio");
 					string subdominio = Console.ReadLine ();
+					SistemaDNS.equiposDeDominio (subdominio);
 					Console.WriteLine ("Presione cualquier tecla para volver...");
 					Console.ReadKey();
+
+				}
+				if (opcion == 5) {
+					Console.Clear ();
+					Console.WriteLine ("************************************");
+					Console.WriteLine ("**        ELIMINAR  EQUIPO        **");
+					Console.WriteLine ("************************************");
+					Console.WriteLine ("");
+					Console.WriteLine ("Ingrese el nombre del equipo a eliminar");
+					string equipo = Console.ReadLine ();
+					SistemaDNS.eliminarEquipo (equipo);
 
 				}
 
@@ -104,6 +118,7 @@ namespace SistemaDNS
 				Console.WriteLine ("2. Ver listado de dominios superiores");
 				Console.WriteLine ("3. Ver Datos de equipo");
 				Console.WriteLine ("4. Ver Equipos de un subdominio");
+				Console.WriteLine ("5. Eliminar equipo ");
 
 				Console.WriteLine ("6. Test");
 				Console.WriteLine ("7. Salir");

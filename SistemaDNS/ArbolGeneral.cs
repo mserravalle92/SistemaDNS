@@ -42,20 +42,29 @@ namespace SistemaDNS
 
 			}
 
-			public void eliminarHijo(NodoGeneral hijo){
-
-				ArrayList listaHijos = this.raiz.getHijos();
+		public void eliminarHijo(NodoGeneral hijo){
+			if (this.raiz.getHijos () != null) {
+				bool existe = false;
+				ArbolGeneral arbolAEliminar = null;
+				ArrayList listaHijos = this.raiz.getHijos ();
 				foreach (ArbolGeneral arbol in listaHijos) {
-					if (arbol.getDatoRaiz()==hijo) {
-					this.raiz.listaHijos.Remove(hijo);
+					if (arbol.getDatoRaiz () == hijo.getDato ()) {
+						Console.WriteLine (hijo.getDato ());
+						existe = true;
+						arbolAEliminar = arbol;
 					}
 				}
+				if (existe == true) {
+					Console.WriteLine ("Eliminando");
 
+					listaHijos.Remove (arbolAEliminar);
+				}
+			} else {
+				Console.WriteLine ("Lista Vacía");
 			}
+
 		}
-
-
-	
 	}
+}
 
 

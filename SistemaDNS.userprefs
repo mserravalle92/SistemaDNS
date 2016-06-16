@@ -1,8 +1,11 @@
 ﻿<Properties StartupItem="SistemaDNS/SistemaDNS.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SistemaDNS/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SistemaDNS/DNS.cs">
     <Files>
-      <File FileName="SistemaDNS/Program.cs" Line="10" Column="23" />
+      <File FileName="SistemaDNS/Program.cs" Line="98" Column="40" />
+      <File FileName="SistemaDNS/ArbolGeneral.cs" Line="68" Column="1" />
+      <File FileName="SistemaDNS/DNS.cs" Line="217" Column="31" />
+      <File FileName="SistemaDNS/Utils.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
